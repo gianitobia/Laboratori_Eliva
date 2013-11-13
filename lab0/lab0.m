@@ -48,7 +48,7 @@ figure;imshow(img);
 figure();
 %%%esercizio 13
 fun = @(block_struct) mean(mean(block_struct.data)).*ones(size(block_struct.data));
-I = imread('prova.png');
+I = imread('../lena512.bmp');
 subplot(2,2,1)
 I2 = blockproc(I,[8 8],fun);
 imshow(uint8(I2));

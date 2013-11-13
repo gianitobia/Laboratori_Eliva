@@ -10,12 +10,13 @@ lut1=lut1*m;
 %%%lut2 funzione c*r^gamma
 c=2;
 r=[0:1/255:1];
-gamma=1/2;
+gamma=3;
 lut2=(c.*r.^gamma);
 A=min(lut2);
 B=max(lut2);
-
 lut2=uint8((lut2-A)/(B-A)*255)
+
+
 I2=intlut(I,lut2);
 plot(lut2);
 figure;imshow(I);
