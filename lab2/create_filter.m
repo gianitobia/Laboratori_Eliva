@@ -1,6 +1,14 @@
 function [ H ] = create_filter( type, w,h)
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
+%CREATE_FILTER crea maschere per applicare filtri spaziali
+%   in base ai parametri passati alla funzione si decide quale tipo di
+%   maschera di filtro applicare.
+%   in base ai valori di type otteniamo:
+%   1) maschera di filtro media con dimensione quadrata WxW
+%   2) maschera di filtro media con dimensione rettangolare WxH
+%   3) maschera di filtro laplaciano non isotropico (3x3)
+%   4) maschera di filtro laplaciano isotropico (3x3)
+%   5) maschera di filtro Sobel orizzontale (3x3)
+%   6) maschera di filtro Sobel verticale (3x3)
 if(nargin<3)
     w=3;
     h=3;
