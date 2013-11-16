@@ -26,3 +26,5 @@ plot(D);
 hold on;
 r=1:7;
 plot((256.^2)./(2.^(2.*r).*12),'r')
+psnr=20*log10(255./sqrt(D));
+figure, plot(psnr,'g');
