@@ -19,7 +19,7 @@ Hy=create_filter(6);
 Ix=imfilter(I,Hx);
 Iy=imfilter(I,Hy);
 
-for c=0:0.2:1
+for c=0:0.3:1
     subplot(2,3,c*5+1);
     K=I+c*(Ix+Iy);
     
