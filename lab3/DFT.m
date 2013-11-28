@@ -54,3 +54,66 @@ subplot(2,2,3);
 imagesc(log(abs(fsh .* lp)));
 subplot(2,2,4);
 imshow(uint8(abs(ifft2(ifftshift(fsh .* lp)))));
+
+%%punto 4
+figure;
+addpath ../lab2;
+h_mean=create_filter(1,3,3);
+h_zeros=zeros(101,101);
+h_zeros(49:51,49:51)=h_mean;
+H_mean=fft2(h_zeros);
+subplot(2,3,1)
+mesh(abs(fftshift(H_mean)))
+title('filtro media 3x3');
+
+h_mean=create_filter(1,5,5);
+h_zeros=zeros(101,101);
+h_zeros(48:52,48:52)=h_mean;
+H_mean=fft2(h_zeros);
+subplot(2,3,2)
+mesh(abs(fftshift(H_mean)))
+title('filtro media 5x5');
+
+
+h_mean=create_filter(4,5,5);
+h_zeros=zeros(101,101);
+h_zeros(49:51,49:51)=h_mean;
+H_mean=fft2(h_zeros);
+subplot(2,3,3)
+mesh(abs(fftshift(H_mean)))
+title('laplaciano non isotropico')
+
+h_mean=create_filter(5,5,5);
+h_zeros=zeros(101,101);
+h_zeros(49:51,49:51)=h_mean;
+H_mean=fft2(h_zeros);
+subplot(2,3,4)
+mesh(abs(fftshift(H_mean)))
+title('laplaciano isotropico')
+
+rmpath ../lab2;
+
+%%punto 5
+I_fft=fft2(I);
+dim=size(I);
+H=glp(30,dim(2),dim(1));
+I_filter=fftshift(I_fft).*H;
+J=ifft2(ifftshift(I_filter));
+imshow(uint8(abs(J)));
+
+%%paddato
+figure;
+I_pad=[I,255*ones(dim);255*ones(dim),255*ones(dim)];
+I_pad_fft=fft2(I_pad);
+dim_pad=size(I_pad);
+H_pad=glp(30,dim_pad(2),dim_pad(1));
+I_pad_filter=fftshift(I_pad_fft).*H_pad;
+J_pad=ifft2(ifftshift(I_pad_filter));
+J_wo_pad=J_pad(1:dim(1),1:dim(2));
+imshow(uint8(abs(J_wo_pad)));
+
+figure;
+subplot(1,2,1);
+mesh(H);
+subplot(1,2,2);
+mesh(H_pad);

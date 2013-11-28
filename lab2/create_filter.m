@@ -16,9 +16,9 @@ end;
 
 switch type
     case 1
-        H=ones(w,w)/(w*w)
+        H=ones(w,w)/(w*w);
     case 2
-        H=ones(w,h)/(w*h)
+        H=ones(w,h)/(w*h);
     case 3
         H=[1,1,1;1,-8,1;1,1,1];
     case 4
